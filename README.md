@@ -60,7 +60,7 @@ controlPoint_1： 曲线起点的控制点(控制第一个波峰或波谷)
 controlPoint_2：曲线终点的控制点(控制第二个波峰或波谷)
 当 controlPoint_1 == controlPoint_2 时，曲线只有一个波峰或波谷
 **注意：lua中调用的时候，参数的顺序发生了变化，下面截取了部分代码**
-```javascript
+```lua
 ccBezierConfig config;
 config.controlPoint_1 = arr[0];
 config.controlPoint_2 = arr[1];
@@ -83,7 +83,7 @@ if (NULL != tolua_ret)
 **思路**：利用贝塞尔曲线让箭头运动起来，运动的同时每一帧计算曲线斜率，斜率转换成角度，并设置箭头的旋转角度即可。
 ###### lua调用
 
-```javascript
+```lua
 -- 创建箭头sprite
 local target = display.newSprite("ui_jiantou.png")
 target:addTo(self)
@@ -139,7 +139,7 @@ C++源码
 void drawCubicBezier(const Vec2 &origin, const Vec2 &control1, const Vec2 &control2, const Vec2 &destination, unsigned int segments, const Color4F &color);
 ```
 lua调用
-```javascript
+```lua
 -- 画线 贝塞尔曲线
 local myDrawNode = cc.DrawNode:create() 
 myDrawNode:drawCubicBezier(originP, controlP1, controlP2, endP, 100, cc.c4f(0,0,1.0,1))
